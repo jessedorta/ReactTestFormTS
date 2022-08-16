@@ -1,2 +1,2 @@
 # ReactTestFormTS
-Formulário de teste em Reack
+Formulário de teste em React TS
