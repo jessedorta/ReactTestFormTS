@@ -1,0 +1,34 @@
+.btn{
+    background-color: white;
+}
+
+.btn:hover{
+    color: white;
+}
+
+.primary{
+    color: #6897bb;
+    border: 1px solid #6897bb;
+}
+
+.primary:hover{
+    background: #6897bb;
+}
+
+.warning{
+    color: #ff7f50;
+    border: 1px solid #ff7f50;
+}
+
+.warning:hover{
+    background: #ff7f50;
+}
+
+.dark{
+    color: #333333;
+    border: 1px solid #333333;
+}
+
+.dark:hover{
+    background: #333333;
+}

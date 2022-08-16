@@ -1,0 +1,10 @@
+
+label{
+    display: block;
+    margin: 10px auto;
+}
+
+.alert-email{
+    color: #f0a500;
+    margin-top: 0;
+}
