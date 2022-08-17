@@ -6,9 +6,9 @@ type InputProps = {
     name: string,
     type: 'text' | 'email' | undefined, 
     label: string, 
-    value: string
+    value?: string
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void, 
-  }
+}
 
 function Input({ name, type, label, value, onChange }: InputProps) {
     return ( 
@@ -21,7 +21,6 @@ function Input({ name, type, label, value, onChange }: InputProps) {
                 <div className="alert-email" data-testid="error-msg">
                     <small>Digite um email válido.</small>
                 </div>
-
             )}
         </div>
     );

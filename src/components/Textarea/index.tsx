@@ -3,7 +3,7 @@ import React from "react";
 interface textProps{
     name: string,
     label: string, 
-    value: string
+    value?: string
     onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void, 
 }
 

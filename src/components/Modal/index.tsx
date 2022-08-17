@@ -1,4 +1,4 @@
-import React, { FunctionComponentElement, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 
 import './index.css'
@@ -31,11 +31,7 @@ function Modal({title, formData, onClick}: Props) {
                     <div className="text">
                         {/* {JSON.stringify(formData)} */}
                         {Object.entries(formData).map(([index, data]) => {
-                            return (
-                                <div key={index}>
-                                    <p>{data.label}: {data.value}</p>
-                                </div>
-                                );
+                            return ( <div key={index}> <p>{index}: {data}</p> </div> );
                         })}
                     </div>
                     <div className="buttons">

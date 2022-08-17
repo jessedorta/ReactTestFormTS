@@ -1,16 +1,25 @@
 import React from "react";
 
-function Select(props: any) {
+type SelectProps = { 
+  name: string,
+  label: string, 
+  value?: string
+  options: object,
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void, 
+}
+
+function Select({name, label, value, options, onChange}: SelectProps) {
 
     return ( 
     <div>
         <label>
-        {props.label}:
+        {label}:
         </label>
-        <select {...props}>
-          {props.options && props.options.map((e:any, key: React.Key | null | undefined) => { 
-            return <option key={key} value={e.value} >{e.label}</option>; 
-          } )}
+        <select name={name} onChange={onChange} value={value}>
+          {Object.entries(options).map(([index, data]) => {
+            return (<option key={index} value={data.value} >{data.label}</option>);
+          })}
+
         </select>
     </div>
     );
