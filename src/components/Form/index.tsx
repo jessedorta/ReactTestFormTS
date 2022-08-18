@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import './index.css'
-// import mockData from "./Data";
 
 import Input from "./../Inputs";
 import Button from "./../Button";
@@ -10,13 +9,12 @@ import Textarea from "./../Textarea";
 import Alert from "./../Alert";
 import Modal from "./../Modal";
 
-interface fieldsList{
-  fields: object
-}
+interface fieldsList{ fields: object }
 
 function Form({ fields }: fieldsList) {
 
   const initialState = {};
+  const form = useRef<HTMLFormElement>(null);
 
   const [alert, setAlert] = useState(false);
   const [modal, setModal] = useState(false);
@@ -34,7 +32,6 @@ function Form({ fields }: fieldsList) {
 
   function handleSubmit(event: React.MouseEvent<HTMLElement>){
     event.preventDefault();
-    console.log(isEmptyObject(formInputs))
     if (isEmptyObject(formInputs) == true) { 
       setformData(initialState);
       setFormInputs(initialState);
@@ -86,40 +83,35 @@ function Form({ fields }: fieldsList) {
   ];
 
   function handleReset() {
-
+    if (form.current != null) { form.current.reset(); }
     setFormInputs(initialState)
     setformData(initialState)
-
     setAlert(false);
     setModal(false);
-
-    console.log(`formData: ${JSON.stringify(formData)}`)
-    console.log(`formInputs: ${JSON.stringify(formInputs)}`)
   }
 
+  useEffect(() => { if (form.current != null) { form.current.reset(); } }, []);
     return ( 
         <div className="container">
 
-        <form id="dataForm">
-
-        <>{alert === true && ( <Alert type="alert-warning" text="Necessário preencher todos os dados!"/> ) }</>
+        <form id="dataForm" ref={form}>
+          <>{alert === true && ( <Alert type="alert-warning" text="Necessário preencher todos os dados!"/> ) }</>
+          {/* <>{JSON.stringify(formInputs)}</> */}
           {Object.entries(fields).map(([index, data]) => {
             return (
-              <div>
-              {/* <>{data.type === 'STRING' && ( <Input name={index} type="text" label={data.display_text.des} onChange={changeValue} /> ) }</> */}
-              <>{data.type === 'STRING' && ( <Input name={index} type="text" value={isEmptyObject(formInputs) == false ? data.column_json : ''} label={data.display_text.des} onChange={changeValue} /> ) }</>
-              <>{data.type === 'SELECT' && ( <Select name={index} value={isEmptyObject(formInputs) == false ? data.column_json : ''} label={data.display_text.des} options={options} onChange={changeValue}  /> ) }</>
-              <>{data.type === 'TEXTAREA' && ( <Textarea name={index} value={isEmptyObject(formInputs) == false ? data.column_json : ''} label={data.display_text.des} onChange={changeValue} /> ) }</>
+              <div key={data.uuid}>
+                <>{data.type === 'STRING' && ( <Input name={index} type="text" label={data.display_text.des} onChange={changeValue} /> ) }</>
+                <>{data.type === 'SELECT' && ( <Select name={index} label={data.display_text.des} options={options} onChange={changeValue}  /> ) }</>
+                <>{data.type === 'TEXTAREA' && ( <Textarea name={index} label={data.display_text.des} onChange={changeValue} /> ) }</>
               </div>
             );
           })}
-
           <div className="buttons">
             <Button text="Enviar" type='button' css="btn primary" onClick={ handleSubmit } />
-            <Button text="Limpar" type='button' css="btn warning" onClick={ handleReset } />
+            <Button text="Limpar" type='reset' css="btn warning" onClick={ handleReset } />
           </div>
-
         </form>
+
         <>{modal === true && ( <Modal title="Dados do formulário" type="primary" formData={formData} onClick={ handleReset } /> ) }</>
       </div>
     );

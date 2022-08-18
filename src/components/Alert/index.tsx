@@ -2,12 +2,10 @@ import React from "react";
 
 import './index.css';
 
-function Alert(props: any) {
-    return ( 
-        <div className={props.type}>
-            {props.text}
-        </div>
-    );
-  }
+interface AlertProps{ type: string, text: string }
+
+function Alert({type, text}: AlertProps) {
+  return ( <div className={type}> {text} </div> );
+}
 
 export default Alert;

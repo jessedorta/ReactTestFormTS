@@ -9,7 +9,6 @@ type ButtonProps = {
 }
 
 function Button({ type, css, onClick, text }: ButtonProps) {
-
   return (
     <span>
       <button type={type} className={css} onClick={onClick}> {text}</button>
