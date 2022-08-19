@@ -32,7 +32,7 @@ function Form({ fields }: fieldsList) {
 
   function handleSubmit(event: React.MouseEvent<HTMLElement>){
     event.preventDefault();
-    if (isEmptyObject(formInputs) == true) { 
+    if (isEmptyObject(formInputs) === true) { 
       setformData(initialState);
       setFormInputs(initialState);
       setAlert(true);
