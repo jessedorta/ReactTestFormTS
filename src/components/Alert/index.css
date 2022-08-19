@@ -1,7 +1,29 @@
-.alert-warning{
-    margin: 20px auto;
+.alert {
+    display:flex;
+    flex-direction: row;
+    margin: 10px auto;
     padding: 10px;
-    color: #ff4040;
-    border: 1px solid #ff4040;
     background-color: #fff8f1;
+    border: 1px solid #ff4040;
+}
+
+.alert > div {
+    /* flex: auto; */
+    margin: auto 2px;
+    text-align:left;
+}
+
+.alertIcon{
+    display: flex;
+    width: 24px;
+}
+
+.alertIcon svg{
+    height: 24px;
+    width: 24px;
+}
+
+.alertText{
+    color: #ff4040;
+    font-weight: bold;
 }

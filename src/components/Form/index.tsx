@@ -95,19 +95,19 @@ function Form({ fields }: fieldsList) {
         <div className="container">
 
         <form id="dataForm" ref={form}>
-          <>{alert === true && ( <Alert type="alert-warning" text="Necessário preencher todos os dados!"/> ) }</>
-          {/* <>{JSON.stringify(formInputs)}</> */}
+          <>{alert === true && ( <Alert type="alert alertWarning" text="Necessário preencher todos os dados!"/> ) }</>
+          {/* <>{JSON.stringify(fields)}</> */}
           {Object.entries(fields).map(([index, data]) => {
             return (
               <div key={data.uuid}>
-                <>{data.type === 'STRING' && ( <Input name={index} type="text" label={data.display_text.des} onChange={changeValue} /> ) }</>
+                <>{data.type === 'STRING' && ( <Input name={index} type={data.type} label={data.display_text.des} onChange={changeValue} /> ) }</>
                 <>{data.type === 'SELECT' && ( <Select name={index} label={data.display_text.des} options={options} onChange={changeValue}  /> ) }</>
                 <>{data.type === 'TEXTAREA' && ( <Textarea name={index} label={data.display_text.des} onChange={changeValue} /> ) }</>
               </div>
             );
           })}
           <div className="buttons">
-            <Button text="Enviar" type='button' css="btn primary" onClick={ handleSubmit } />
+            <Button text="Enviar" type='submit' css="btn primary" onClick={ handleSubmit } />
             <Button text="Limpar" type='reset' css="btn warning" onClick={ handleReset } />
           </div>
         </form>

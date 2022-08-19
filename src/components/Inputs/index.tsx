@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import './index.css'
 
@@ -15,7 +15,8 @@ function Input({ name, type, label, value, onChange }: InputProps) {
         <div>
             <label> {label}: </label>
             <input type={type} value={value} name={name} onChange={onChange} />
-            {type === 'email' && value && !/\S+@\S+\.\S+/.test(value) && ( <div className="alert-email" data-testid="error-msg"> <small>Digite um email válido.</small> </div> )}
+            {/* {type === 'email' && value && !/\S+@\S+\.\S+/.test(value) && ( <div className="alert-email" data-testid="error-msg"> <small>Digite um email válido.</small> </div> )} */}
+            {type === 'email' && !/\S+@\S+\.\S+/.test(name) && ( <div className="alert-email" data-testid="error-msg"> <small>Digite um email válido.</small> </div> )}
         </div>
     );
   }

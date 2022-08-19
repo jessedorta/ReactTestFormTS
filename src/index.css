@@ -33,7 +33,23 @@
     box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
   }
 
-  .App .title{
-    color: #f0a500;
-    margin-bottom: 6px;
+  .App > .formTitle > div{
+    width: auto;
+    float: left;
+  }
+
+  .textTitle{
+    margin: 0;
+    padding-top: 10px;
+    margin-left: 10px;
+  }
+
+  .iconForm{
+    width: 60px;
+    float: left;
+    display: block;
+  }
+
+  .iconForm > svg{
+    height: 60px;
   }

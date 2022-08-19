@@ -32,3 +32,21 @@
 .dark:hover{
     background: #333333;
 }
+
+.iconGroup {
+    margin:1px;
+    display:flex;
+    flex-direction:row;
+    width:100px;
+    height:24px;
+    padding:2px; /* this */
+}
+
+.iconGroup > div {
+    flex:1 1 auto;
+    text-align:center;
+}
+
+.iconGroup > div > svg{
+    height: 24px;
+}
